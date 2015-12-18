@@ -101,7 +101,18 @@
       </snapshots>
     </repository>
   </repositories>
-
+<pluginRepositories>
+  <pluginRepository>
+    <id>eclipse.virgo.build.bundles.release</id>
+    <name>Eclipse Virgo Build</name>
+    <url>http://build.eclipse.org/rt/virgo/maven/bundles/release</url>
+  </pluginRepository>
+  <pluginRepository>
+    <id>com.springsource.repository.bundles.external</id>
+    <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+    <url>http://repository.springsource.com/maven/bundles/external</url>
+  </pluginRepository>
+</pluginRepositories>
 
   <properties>
     <maven.compile.source>1.5</maven.compile.source>
@@ -159,6 +170,25 @@
         <configuration>
           <encoding>US-ASCII</encoding>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>3.0.1</version>
+          <configuration>
+          	  <dumpInstructions>/tmp/thymeleaf-spring4.bnd</dumpInstructions>
+          	  <unpackBundle>true</unpackBundle>
+              <instructions>
+                  <Bundle-SymbolicName>org.thymeleaf.spring4</Bundle-SymbolicName>
+                  <Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
+                  <Bundle-Vendor>de.datenkollektiv</Bundle-Vendor>
+                  <Import-Package>
+                  		org.springframework.core.*;version="[4.1, 5)";resolution:="required",
+	                    *
+                  </Import-Package>
+              </instructions>
+          </configuration>
       </plugin>
 
       <plugin>
@@ -254,17 +284,10 @@
           </execution>
         </executions>
       </plugin>
-
-
     </plugins>
-
   </build>
 
-
-
-
   <dependencies>
-
     <dependency>
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf</artifactId>

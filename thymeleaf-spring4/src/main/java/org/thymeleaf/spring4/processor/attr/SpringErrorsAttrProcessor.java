@@ -23,12 +23,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.web.servlet.support.BindStatus;
-import org.springframework.web.servlet.tags.form.ValueFormatterWrapper;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.dom.Element;
 import org.thymeleaf.dom.Macro;
 import org.thymeleaf.processor.ProcessorResult;
 import org.thymeleaf.processor.attr.AbstractAttrProcessor;
+import org.thymeleaf.spring4.ValueFormatter;
 import org.thymeleaf.spring4.naming.SpringContextVariableNames;
 import org.thymeleaf.spring4.util.FieldUtils;
 import org.unbescape.html.HtmlEscape;
@@ -86,7 +86,7 @@ public final class SpringErrorsAttrProcessor
                     strBuilder.append(ERROR_DELIMITER);
                 }
                 final String displayString = 
-                        ValueFormatterWrapper.getDisplayString(errorMsgs[i], false);
+                        ValueFormatter.getDisplayString(errorMsgs[i], false);
                 strBuilder.append(HtmlEscape.escapeHtml4Xml(displayString));
             }
             

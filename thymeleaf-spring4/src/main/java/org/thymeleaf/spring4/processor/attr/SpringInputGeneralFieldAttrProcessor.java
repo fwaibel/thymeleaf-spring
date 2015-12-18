@@ -22,10 +22,10 @@ package org.thymeleaf.spring4.processor.attr;
 import java.util.Map;
 
 import org.springframework.web.servlet.support.BindStatus;
-import org.springframework.web.servlet.tags.form.ValueFormatterWrapper;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.dom.Element;
 import org.thymeleaf.processor.ProcessorResult;
+import org.thymeleaf.spring4.ValueFormatter;
 import org.thymeleaf.spring4.requestdata.RequestDataValueProcessorUtils;
 import org.thymeleaf.util.StringUtils;
 
@@ -141,8 +141,8 @@ public final class SpringInputGeneralFieldAttrProcessor
         // Also, no escaping needed as attribute values are always escaped by default
         final String value =
                 applyConversion(type)?
-                        ValueFormatterWrapper.getDisplayString(bindStatus.getValue(), bindStatus.getEditor(), false) :
-                        ValueFormatterWrapper.getDisplayString(bindStatus.getActualValue(), false);
+                        ValueFormatter.getDisplayString(bindStatus.getValue(), bindStatus.getEditor(), false) :
+                        ValueFormatter.getDisplayString(bindStatus.getActualValue(), false);
         
         element.setAttribute("id", id);
         element.setAttribute("name", name);

@@ -22,11 +22,11 @@ package org.thymeleaf.spring4.processor.attr;
 import java.util.Map;
 
 import org.springframework.web.servlet.support.BindStatus;
-import org.springframework.web.servlet.tags.form.ValueFormatterWrapper;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.dom.Element;
 import org.thymeleaf.dom.Text;
 import org.thymeleaf.processor.ProcessorResult;
+import org.thymeleaf.spring4.ValueFormatter;
 import org.thymeleaf.spring4.requestdata.RequestDataValueProcessorUtils;
 
 
@@ -61,7 +61,7 @@ public final class SpringTextareaFieldAttrProcessor
         
         final String id = computeId(arguments, element, name, false);
         
-        final String value = ValueFormatterWrapper.getDisplayString(bindStatus.getValue(), bindStatus.getEditor(), false);
+        final String value = ValueFormatter.getDisplayString(bindStatus.getValue(), bindStatus.getEditor(), false);
 
         final String processedValue =
                 RequestDataValueProcessorUtils.processFormFieldValue(

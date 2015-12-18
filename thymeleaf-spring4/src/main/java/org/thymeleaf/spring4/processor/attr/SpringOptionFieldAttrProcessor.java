@@ -22,11 +22,11 @@ package org.thymeleaf.spring4.processor.attr;
 import java.util.Map;
 
 import org.springframework.web.servlet.support.BindStatus;
-import org.springframework.web.servlet.tags.form.SelectedValueComparatorWrapper;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.dom.Element;
 import org.thymeleaf.exceptions.TemplateProcessingException;
 import org.thymeleaf.processor.ProcessorResult;
+import org.thymeleaf.spring4.SelectedValueComparator;
 import org.thymeleaf.spring4.requestdata.RequestDataValueProcessorUtils;
 
 
@@ -66,7 +66,7 @@ public final class SpringOptionFieldAttrProcessor
         }
         
         final boolean selected = 
-            SelectedValueComparatorWrapper.isSelected(bindStatus, value);
+            SelectedValueComparator.isSelected(bindStatus, value);
 
         element.setAttribute("value", value);
         element.setAttribute(

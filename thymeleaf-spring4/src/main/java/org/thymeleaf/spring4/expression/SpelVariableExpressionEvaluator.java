@@ -29,7 +29,6 @@ import org.springframework.expression.spel.standard.SpelExpression;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.web.servlet.support.BindStatus;
-import org.springframework.web.servlet.tags.form.ValueFormatterWrapper;
 import org.thymeleaf.Configuration;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.cache.ICache;
@@ -41,6 +40,7 @@ import org.thymeleaf.context.IWebContext;
 import org.thymeleaf.context.VariablesMap;
 import org.thymeleaf.exceptions.TemplateProcessingException;
 import org.thymeleaf.expression.ExpressionEvaluatorObjects;
+import org.thymeleaf.spring4.ValueFormatter;
 import org.thymeleaf.spring4.util.FieldUtils;
 import org.thymeleaf.standard.expression.IStandardConversionService;
 import org.thymeleaf.standard.expression.IStandardVariableExpressionEvaluator;
@@ -104,7 +104,7 @@ public class SpelVariableExpressionEvaluator
 
                     if (bindStatus != null) {
                         // The expression goes against a bound object! Let Spring do its magic for displaying it...
-                        return ValueFormatterWrapper.getDisplayString(bindStatus.getValue(), bindStatus.getEditor(), false);
+                        return ValueFormatter.getDisplayString(bindStatus.getValue(), bindStatus.getEditor(), false);
                     }
 
                 }
