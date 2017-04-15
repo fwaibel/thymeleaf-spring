@@ -22,12 +22,12 @@ done
 
 shift $(($OPTIND - 1))
 
-./mvnw clean compile bundle:bundle
-
 if [ ${BUILD_TYPE} == "LOCAL" ]; then
   echo "local build detected..."
+  ./mvnw clean compile bundle:bundle
   ./mvnw install:install-file -Dfile=target/${ARTIFACT_ID}-${VERSION}.jar -DgroupId=${GROUP_ID} -DartifactId=${ARTIFACT_ID} -Dversion=${VERSION} -Dpackaging=jar
 else
   echo "CI build detected..."
+  ./mvnw -Dmaven.repo.local=/var/maven/repository/ clean compile bundle:bundle
   ./mvnw -Dmaven.repo.local=/var/maven/repository/ install:install-file -Dfile=target/${ARTIFACT_ID}-${VERSION}.jar -DgroupId=${GROUP_ID} -DartifactId=${ARTIFACT_ID} -Dversion=${VERSION} -Dpackaging=jar -DlocalRepositoryPath=/var/maven/repository/
 fi
