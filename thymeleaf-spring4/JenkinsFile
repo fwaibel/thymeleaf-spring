@@ -1,0 +1,10 @@
+node {
+
+    stage ('checkout') {
+        checkout scm
+    }
+
+    stage ('build') {
+        sh "./install-thymeleaf-spring4-2.1.4.VIRGO.sh"
+    }
+}
