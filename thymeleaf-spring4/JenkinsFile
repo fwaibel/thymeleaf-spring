@@ -5,7 +5,7 @@ node {
     }
 
     stage ('build') {
-        dir(thymeleaf-spring4) {
+        dir('thymeleaf-spring4') {
             sh "./install-thymeleaf-spring4-2.1.4.VIRGO.sh"
         }
     }
